@@ -3,9 +3,5 @@
 tls.*
 *.crt
 *.key
+**/.kube/*
 .DS_Store
-
-
-# DO NOT ignore .kube on below folders
-!compose/csghub/.kube
-!compose/csghub-with-gitea/.kube
