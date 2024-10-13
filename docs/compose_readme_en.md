@@ -37,7 +37,7 @@ Docker Engine (>=5:20.10.24)
 ### Usage
 1. Navigate to the `csghub` directory.
 2. Edit the `.env` file and set `SERVER_DOMAIN` to the current host's IP address or domain name. DO NOT use `127.0.0.1` or `localhost`.
-3. the space and registry related configurations in .env can be ignored without Kubernetes cluster. The configuration for integration with the existing Kubernetes cluster can be found [here](#Configure kubernetes).
+3. the space and registry related configurations in .env can be ignored without Kubernetes cluster. The configuration for integration with the existing Kubernetes cluster can be found [on below section](#Configure-kubernetes).
 3. Run the `startup.sh` script. Once all services are started, you can visit the self-deployed CSGHub service at `http://[SERVER_DOMAIN]`.
 
 ### Notes
