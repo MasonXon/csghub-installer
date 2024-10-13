@@ -57,7 +57,7 @@ docker compose -f docker-compose.yml down -v
 * Kubernetes version > 1.20+
 * Minimum server configuration 8c16g, X86_64 architecture (non-X86_64 system architecture is not supported yet)
 * Kubernetes can be deployed in a variety of ways, such as Docker Desktop，[K3s](https://docs.k3s.io/quick-start), [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
-* CSGhub instance running with compose installation script
+* CSGhub instance running with docker compose installation script
 
 ### Knative Configuration
 
