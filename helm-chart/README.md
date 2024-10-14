@@ -1,4 +1,3 @@
-**[简体中文](../../docs/helm_chart_readme_cn.md)**
 
 ## CSGHUB Helm Chart
 
