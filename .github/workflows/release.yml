@@ -3,18 +3,19 @@ name: Release Charts
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 
 jobs:
   release:
     permissions:
-      contents: write
+      contents: write  # 允许写入内容
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 获取完整的历史记录
 
       - name: Configure Git
         run: |
@@ -26,9 +27,28 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}  # 使用推送的标签作为 Release 标签
+          release_name: Release ${{ github.ref }}  # 释放的名称
+          draft: false  # 设置为 false 以发布 Release
+          prerelease: false  # 设置为 false 以表明这是正式版本
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GITHUB_TOKEN
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         with:
-          charts_dir: helm-chart/charts
+          charts_dir: helm-chart/charts  # 指定 Helm 图表目录
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"  # 使用 GITHUB_TOKEN 作为 CR_TOKEN
+
+      - name: Upload Assets to Release
+        uses: actions/upload-release-asset@v1  # 上传 Release 资产
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}  # 获取 Release 的上传 URL
+          asset_path: helm-chart/charts/*.tgz  # 指定要上传的资产（在此示例中为所有 tgz 文件）
+          asset_name: helm-chart-charts.tgz  # 上传时使用的资产名称
+          asset_content_type: application/gzip  # 设置内容类型
