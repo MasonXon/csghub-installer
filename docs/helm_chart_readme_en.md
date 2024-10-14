@@ -10,9 +10,9 @@ CSGHub致力于为用户带来针对大模型原生设计的、可私有化部�
 
 目前官方提供两种部署方式：
 
-- [Docker Compose](https://github.com/OpenCSGs/csghub-installer/tree/main/docker-compose)
+- [Docker Compose](https://github.com/OpenCSGs/csghub/tree/main/deploy/all_in_one)
 
-- [Helm Chart](https://github.com/OpenCSGs/csghub-installer/tree/main/helm-chart)
+- [Helm Chart](https://github.com/OpenCSGs/csghub-installer)
 
     *说明：后面 docker-compose 会合并到 helm chart 所属的 Git 仓库。*
 
@@ -351,7 +351,9 @@ kubectl get pods -A
 
 ## 安装 CSGHub Helm Chart
 
-### 创建 KubeConfig Secret
+### 手动部署
+
+#### 创建 KubeConfig Secret
 
 用于保存`.kube/config`的 Secret 需要我们自行创建，因为配置文件较为私密，因此并没有集成在 helm chart 中。
 
@@ -364,7 +366,7 @@ kubectl create ns csghub
 kubectl -n csghub create secret generic kube-configs --from-file=/root/.kube/
 ```
 
-### 部署 csghub
+#### 部署 csghub
 
 1. 添加 helm repo
 
@@ -477,6 +479,17 @@ kubectl -n csghub create secret generic kube-configs --from-file=/root/.kube/
          Password: xxxxxxxx
     ......
     ```
+
+### 快捷部署
+
+使用试下方式可以快速启动 csghub helm chart 测试环境。
+
+```shell
+# <domain>: like example.com
+curl -sfL https://raw.githubusercontent.com/OpenCSGs/csghub-installer/refs/heads/main/helm-chart/install.sh | bash -s -- example.com
+```
+
+脚本执行完成后，仍然需要自行配置 DNS 解析。
 
 ## 故障排查
 
