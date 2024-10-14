@@ -10,13 +10,13 @@ CSGHub致力于为用户带来针对大模型原生设计的、可私有化部�
 
 目前官方提供两种部署方式：
 
-- [Docker Compose](https://github.com/OpenCSGs/csghub/tree/main/deploy/all_in_one)
+- [Docker Compose](../docker-compose)
 
-- [Helm Chart](https://github.com/OpenCSGs/csghub-installer)
+- [Helm Chart](../helm-chart)
 
     *说明：后面 docker-compose 会合并到 helm chart 所属的 Git 仓库。*
 
-本次主要介绍 Helm Chart 部署方式。Helm Chart 部署方式发布时间较短，目前仅包含了必要组件的必要资源的创建。如遇使用过程中遇到任何问题可以通过方式提交反馈：
+本次主要介绍 Helm Chart 部署方式。Helm Chart 部署方式发布时间较短，目前仅包含了必要组件的必要资源的创建。如遇使用过程中遇到任何问题可以通过issue方式提交反馈到当前项目：
 
 -  [csghub-installer](https://github.com/OpenCSGs/csghub-installer)
 
