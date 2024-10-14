@@ -1,3 +1,5 @@
+**[简体中文](../../docs/helm_chart_readme_cn.md)**
+
 ## CSGHUB Helm Chart
 
 CSGHub is an open source, trustworthy large model asset management platform that can assist users in governing the assets involved in the lifecycle of LLM and LLM applications (datasets, model files, codes, etc).
